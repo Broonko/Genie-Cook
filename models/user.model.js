@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const agentSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
 
   name: {
     type: String,
@@ -23,4 +23,6 @@ const agentSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true
-  },
+  }
+  
+  })

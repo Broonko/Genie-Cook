@@ -7,12 +7,12 @@ function userSignup (req, res) {
     .create({
       name: req.body.name,
       email: req.body.email,
-      telephone: req.body.telephone,
-      image: req.body.image,
+      // telephone: req.body.telephone,
+      // image: req.body.image,
       password: encryptedPasswd
     })
     .then(user=> {
-      const data = { email: agent.email, name: agent.name }
+      const data = { email: user.email, name: user.name }
       const token = jwt.sign(data, process.env.SECRET)
       res.status(200).json({ token: token, ...data })
     })
@@ -27,9 +27,9 @@ function userLogin (req, res) {
         res.send('User not found')
         return
       } else {
-        const result = bcrypt.compareSync(req.body.password, agent.password)
+        const result = bcrypt.compareSync(req.body.password, user.password)
         if (result) {
-          const data = { email: agent.email, name: agent.name }
+          const data = { email: user.email, name: user.name }
           const token = jwt.sign(data, process.env.SECRET)
           res.status(200).json({ token: token, ...data })
           res.send('Passwords do not match')

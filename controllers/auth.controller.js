@@ -37,7 +37,7 @@ function userLogin (req, res) {
       }
     })
 }
-module.exports = {
+module.exports = { 
   userSignup,
   userLogin
 }

@@ -23,7 +23,7 @@ const app = express()
   .use(cors())
   .use(morgan('combined'))
   .use(express.json())
-  .use('/api', require('./router/index.js'))
+  .use('/api', require('./api/router/index.js'))
 
 
 app.listen(3000, function () {

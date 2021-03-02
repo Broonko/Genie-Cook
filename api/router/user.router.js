@@ -5,8 +5,8 @@ const {
   
 } = require('../controllers/user.controller')
 
-router.get('/', getAllRecepies)
+/*router.get('/', getAllRecepies)
 router.get('/recepies/me', authUser, getUserRecepies)
-router.get('/me', authUser,getUser)
+router.get('/me', authUser,getUser)*/
 
 module.exports = router

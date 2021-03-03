@@ -2,18 +2,17 @@
 const { handleError } = require("../utils")
 const axios = require ('axios')
 const api = axios.create({
-  baseURL: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=d44a9f25d4934489975bd7efa617bb08&ingredients",
+  baseURL: "https://api.spoonacular.com/recipes/findByIngredients?apiKey=d44a9f25d4934489975bd7efa617bb08&ingredients=chicken",
   timeout: 2000
 })
 
 function getRecipes (req, res){
-  console.log(req.query)
-  api
-  .get(req.query)
   
+  //
+  api
+  .get()
   .then(response => {
-    console.log(response)
-    res.json(response)
+    res.json(response.data)
   })
   .catch(err => {
     handleError(err, res)

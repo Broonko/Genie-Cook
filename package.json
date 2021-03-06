@@ -11,6 +11,9 @@
     "node": "^15.8.0",
     "path": "^0.12.7"
   },
+  "scripts": {
+    "start": "nodemon index.js"
+  },
   "devDependencies": {
     "prettier": "2.2.1"
   }

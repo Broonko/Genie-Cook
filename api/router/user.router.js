@@ -2,7 +2,8 @@ const router = require('express').Router()
 const { authUser } = require('../utils')
 
 const {
- getProfile 
+ getProfile ,
+ 
 } = require('../controllers/user.controller')
 
 

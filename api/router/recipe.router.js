@@ -6,8 +6,8 @@ const {
   getNutrition 
 } = require("../controllers/recipe.controller");
 
-router.get("/ingredients/:ingredients", getRecipes);
-router.get("/id/:id", getNutrition)
+router.get("/ingredients", getRecipes);
+router.get("/:id", getNutrition)
 // router.post("/", addRecipe);
 
 module.exports = router;

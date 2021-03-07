@@ -17,6 +17,7 @@ function getRecipes (req, res){
   console.log('tu puta madre')
   console.log(req.params)
   console.log(params.ingredients)
+  console.log(req.query + 'query')
   api
   .get(req.params.ingredients)
   .then(response => {

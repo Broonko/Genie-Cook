@@ -15,7 +15,7 @@ function getRecipes (req, res){
     res.json(response.data)
   })
   .catch(err => {
-    handleError(err, res)
+    console.error(err)
   })
 }
 

@@ -2,11 +2,10 @@ const router = require('express').Router()
 const { authUser } = require('../utils')
 
 const {
-  
+ getProfile 
 } = require('../controllers/user.controller')
 
-/*router.get('/', getAllRecepies)
-router.get('/recepies/me', authUser, getUserRecepies)
-router.get('/me', authUser,getUser)*/
+
+router.get('/me', authUser, getProfile)
 
 module.exports = router

@@ -12,7 +12,7 @@ function authUser (req, res, next) {
       userModel
         .findOne({ email: token.email })
         .then(user => {
-          res.locals.agent = user
+          res.locals.userId = user._id
           next()
         })
         .catch(err => res.json(err))

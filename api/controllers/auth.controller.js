@@ -8,8 +8,6 @@ function userSignup (req, res) {
     .create({
       name: req.body.name,
       email: req.body.email,
-      // telephone: req.body.telephone,
-      // image: req.body.image,
       password: encryptedPasswd
     })
     .then(user=> {
@@ -21,9 +19,11 @@ function userSignup (req, res) {
 }
 
 function userLogin (req, res) {
+  console.log(req.body)
   userModel
     .findOne({ email: req.body.email })
     .then(user => {
+      console.log(user)
       if (!user) {
         res.send('User not found')
         return

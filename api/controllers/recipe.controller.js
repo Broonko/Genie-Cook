@@ -1,12 +1,24 @@
 const recipeModel = require('../models/recipe.model')
+const queryModel = require('../models/query.model')
 
-const { findRecipes } = require('../services/spoonacular')
+const API = require('../services/spoonacular')
+
+async function findCached (req, res, next) {
+  const cached = await (await queryModel.findOne({ queryText: req.query.ingredients })).populated('recipes')
+
+  if (cached) {
+    return res.json(cached.recipes)
+  } else {
+    return next()
+  }
+}
 
 async function getRecipes (req, res) {
   try {
-    const result = await findRecipes(req.query.ingredients)
+    const result = await API.findRecipes(req.query.ingredients)
     const recipes = []
-    result.forEach(async (recipe) => {
+    const queryRecipes = []
+    await Promise.all(result.map(async (recipe) => {
       const newRecipe = {
         recipeId: recipe.id,
         title: recipe.title,
@@ -20,9 +32,13 @@ async function getRecipes (req, res) {
       recipes.push(newRecipe)
       const foundRecipe = await recipeModel.findOne({ recipeId: recipe.id })
       if (!foundRecipe) {
-        await recipeModel.create(newRecipe)
+        const createdRecipe = await recipeModel.create(newRecipe)
+        queryRecipes.push(createdRecipe._id)
+      } else {
+        queryRecipes.push(foundRecipe._id)
       }
-    })
+    }))
+    await queryModel.create({ queryText: req.query.ingredients, recipes: queryRecipes })
     return res.json(recipes)
   } catch (error) {
     console.log(error)
@@ -30,23 +46,7 @@ async function getRecipes (req, res) {
   }
 }
 
-// function getNutrition (req, res) {
-//   console.log(req.params)
-//   console.log('dentro de get nutrition')
-//   console.log(req.query)
-//   console.log(req + 'REC')
-//   console.log(req.params.id + '3')
-//   nutrition
-//     .get(`${req.params.id}/nutritionWidget.json?apiKey=af663f23949f446b99686cea6f2c12f6`)
-//     .then(response => {
-//       res.json(response.data)
-//     })
-//     .catch(err => {
-//       console.error(err)
-//     })
-// }
-
 module.exports = {
-  getRecipes
-  // getNutrition
+  getRecipes,
+  findCached
 }

@@ -13,7 +13,6 @@ async function findRecipes (ingredients) {
   const recipes = await API.get('/findByIngredients', { params: { ingredients } })
   return Promise.all(recipes.data.map(async recipe => {
     const nutrition = await API.get(`/${recipe.id}/nutritionWidget.json`)
-    console.log('nutrition', nutrition)
     return {
       ...recipe,
       calories: nutrition.data.calories,

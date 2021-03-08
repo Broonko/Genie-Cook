@@ -1,11 +1,11 @@
 const router = require('express').Router()
 
 const {
-  getRecipes
-  // getNutrition
+  getRecipes,
+  findCached
 } = require('../controllers/recipe.controller')
 
-router.get('/search', getRecipes)
+router.get('/search', findCached, getRecipes)
 // router.get('/:id', getNutrition)
 // router.post("/", addRecipe);
 

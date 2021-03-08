@@ -9,10 +9,19 @@ const API = axios.create({
   }
 })
 
-function findRecipes (ingredients) {
-  return API.get('/findByIngredients', { params: { ingredients } })
+async function findRecipes (ingredients) {
+  const recipes = await API.get('/findByIngredients', { params: { ingredients } })
+  return Promise.all(recipes.data.map(async recipe => {
+    const nutrition = await API.get(`/${recipe.id}/nutritionWidget.json`)
+    console.log('nutrition', nutrition)
+    return {
+      ...recipe,
+      calories: nutrition.data.calories,
+      carbs: nutrition.data.carbs,
+      fat: nutrition.data.fat,
+      protein: nutrition.data.protein
+    }
+  }))
 }
-
-// "https://api.spoonacular.com/recipes/complexSearch?apiKey=d44a9f25d4934489975bd7efa617bb08&includeIngredients=&addRecipeInformation=true"
 
 module.exports = { findRecipes }

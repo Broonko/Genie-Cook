@@ -6,12 +6,16 @@ async function getRecipes (req, res) {
   try {
     const result = await findRecipes(req.query.ingredients)
     const recipes = []
-    result.data.forEach(async (recipe) => {
+    result.forEach(async (recipe) => {
       const newRecipe = {
         recipeId: recipe.id,
         title: recipe.title,
         image: recipe.image,
-        ingredients: recipe.usedIngredients.map(ingredient => ingredient.name)
+        ingredients: recipe.usedIngredients.map(ingredient => ingredient.name),
+        calories: recipe.calories,
+        carbs: recipe.carbs,
+        fat: recipe.fat,
+        protein: recipe.protein
       }
       recipes.push(newRecipe)
       const foundRecipe = await recipeModel.findOne({ recipeId: recipe.id })
@@ -21,6 +25,7 @@ async function getRecipes (req, res) {
     })
     return res.json(recipes)
   } catch (error) {
+    console.log(error)
     return res.json({ error: 'problem finding recipes' })
   }
 }

@@ -1,13 +1,12 @@
-const router = require("express").Router();
-const { authUser } = require("../utils");
+const router = require('express').Router()
 
-const { 
-  getRecipes, 
-  getNutrition 
-} = require("../controllers/recipe.controller");
+const {
+  getRecipes
+  // getNutrition
+} = require('../controllers/recipe.controller')
 
-router.get("/ingredients", getRecipes);
-router.get("/:id", getNutrition)
+router.get('/search', getRecipes)
+// router.get('/:id', getNutrition)
 // router.post("/", addRecipe);
 
-module.exports = router;
+module.exports = router

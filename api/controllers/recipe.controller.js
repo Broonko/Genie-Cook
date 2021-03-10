@@ -4,8 +4,12 @@ const queryModel = require('../models/query.model')
 const API = require('../services/spoonacular')
 
 async function findCached (req, res, next) {
-  const cached = await (await queryModel.findOne({ queryText: req.query.ingredients })).populated('recipes')
-
+  const cached = await (await queryModel.findOne({ queryText: req.query.ingredients }).populate('recipes'))
+  /*queryModel.findOne({ queryText: req.query.ingredients })
+    .then(cached => {
+      console.log(cached)
+    return res.json(cached.recipes)
+  })*/
   if (cached) {
     return res.json(cached.recipes)
   } else {
@@ -24,10 +28,12 @@ async function getRecipes (req, res) {
         title: recipe.title,
         image: recipe.image,
         ingredients: recipe.usedIngredients.map(ingredient => ingredient.name),
+        measurements: recipe.usedIngredients.map(measurement => measurement.original),
         calories: recipe.calories,
         carbs: recipe.carbs,
         fat: recipe.fat,
-        protein: recipe.protein
+        protein: recipe.protein,
+        summary: recipe.summary
       }
       recipes.push(newRecipe)
       const foundRecipe = await recipeModel.findOne({ recipeId: recipe.id })
@@ -45,8 +51,20 @@ async function getRecipes (req, res) {
     return res.json({ error: 'problem finding recipes' })
   }
 }
-
-module.exports = {
-  getRecipes,
-  findCached
+async function getRecipe(req, res) {
+  console.log('here i am')
+  try {
+    console.log(req.params)
+    const singleRecipe = await recipeModel.findOne({ recipeId: req.params.id })
+    return res.json(singleRecipe)
+  } catch (error) {
+    console.log(error)
+    return res.json({ error: 'problem finding recipe' })
+  }
 }
+
+  module.exports = {
+    getRecipes,
+    findCached,
+    getRecipe
+  }

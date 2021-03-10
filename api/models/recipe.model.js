@@ -14,6 +14,9 @@ const recipeSchema = new mongoose.Schema({
   ingredients: {
     type: [String]
   },
+  measurements: {
+    type: [String]
+  },
   calories: {
     type: Number
   },
@@ -24,6 +27,9 @@ const recipeSchema = new mongoose.Schema({
     type: String
   },
   protein: {
+    type: String
+  },
+  summary: {
     type: String
   }
   // instructions: {

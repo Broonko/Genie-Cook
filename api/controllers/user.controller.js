@@ -12,7 +12,7 @@ async function updateFavourites (req, res) {
     res.locals.user.favourites.push(req.params.id)
   }
   const user = await userModel
-    .findByIdAndUpdate(res.locals.user._id, { favourites: res.locals.user.favourites })
+    .findByIdAndUpdate(res.locals.user._id, { favourites: res.locals.user.favourites }, { new: true })
   res.json(user.favourites)
 }
 

@@ -2,7 +2,7 @@ const axios = require('axios').default
 
 const API = axios.create({
   baseURL: 'https://api.spoonacular.com/recipes',
-  timeout: 5000,
+  timeout: 2000,
   params: {
     apiKey: process.env.API_KEY,
     number: 6

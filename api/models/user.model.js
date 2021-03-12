@@ -15,12 +15,15 @@ const userSchema = new mongoose.Schema({
     },
     unique: [true, 'This is email is registered']
   },
-
   password: {
     type: String,
     required: true
-  }
-  
-  });
-  const usermodel = mongoose.model('user', userSchema)
-  module.exports = usermodel;
+  },
+  favourites: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'recipe'
+  }]
+})
+
+const usermodel = mongoose.model('user', userSchema)
+module.exports = usermodel

@@ -4,7 +4,7 @@ const querySchema = new mongoose.Schema({
   queryText: { // honey, chicken
     type: String
   },
-  recipes:[{
+  recipes: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'recipe'
   }]

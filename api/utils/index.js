@@ -7,7 +7,7 @@ async function authUser (req, res, next) {
   } else {
     try {
       const token = await jwt.verify(req.headers.token, process.env.SECRET)
-      const user = await userModel.findOne({ email: token.email }, '-password -__v -_id')
+      const user = await userModel.findOne({ email: token.email }, '-password -__v')
       res.locals.user = user
       return next()
     } catch (error) {

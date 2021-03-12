@@ -3,7 +3,8 @@
     "browser": true,
     "commonjs": true,
     "es6": true,
-    "node": true
+    "node": true,
+    "mocha": true 
   },
   "extends": ["standard"],
   "globals": {
@@ -13,5 +14,12 @@
   "parserOptions": {
     "ecmaVersion": 2018
   },
-  "rules": {}
+  "parser": "babel-eslint",
+  "rules": {
+    "no-console": "warn", 
+    "no-use-before-define": "warn", 
+    "spaced-comment": "warn",
+    "space-before-function-paren": [true, "never"]
+    // "space-before-function-paren": 0
+  }
 }

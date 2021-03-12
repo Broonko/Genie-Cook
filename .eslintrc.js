@@ -11,5 +11,6 @@ module.exports = {
     ecmaVersion: 12
   },
   rules: {
+    // disable rule of space before function parentheses,
   }
 }

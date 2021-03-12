@@ -6,7 +6,7 @@ const {
   getRecipe
 } = require('../controllers/recipe.controller')
 
-router.get('/search', findCached, getRecipes)
+router.get('/search', findCached, getRecipes) // puedo llamar a varias funciones???
 router.get('/:id', getRecipe)
 // router.post("/", addRecipe);
 

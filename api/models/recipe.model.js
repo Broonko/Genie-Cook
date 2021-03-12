@@ -31,10 +31,10 @@ const recipeSchema = new mongoose.Schema({
   },
   summary: {
     type: String
+  },
+  steps: {
+    type: [String]
   }
-  // instructions: {
-  //   type: Array
-  // }
 })
 
 const recipeModel = mongoose.model('recipe', recipeSchema)

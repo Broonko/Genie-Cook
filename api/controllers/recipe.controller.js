@@ -10,6 +10,7 @@ async function filterResults (recipeIds) {
     recipes[i] = await recipeModel.findById(recipeIds[position])
     recipeIds = recipeIds.filter(elem => elem !== recipeIds[position])
   }
+  console.log('recipes' + recipes)
   return recipes
 }
 // .populate('recipes')
@@ -52,14 +53,19 @@ async function getRecipes (req, res) {
       // recipes.push(newRecipe)
       const foundRecipe = await recipeModel.findOne({ recipeId: recipe.id })
       if (!foundRecipe) {
+        console.log('recipe create')
         const createdRecipe = await recipeModel.create(newRecipe)
         queryRecipes.push(createdRecipe._id)
       } else {
+        console.log('recipe create else')
+
         queryRecipes.push(foundRecipe._id)
       }
     }))
     await queryModel.create({ queryText: req.query.ingredients, recipes: queryRecipes })
     // return res.json(recipes)
+    console.log('query create')
+    console.log(queryRecipes + 'queryrecipes')
     return res.json(await filterResults(queryRecipes))
   } catch (error) {
     console.log(error)

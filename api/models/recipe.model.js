@@ -18,7 +18,7 @@ const recipeSchema = new mongoose.Schema({
     type: [String]
   },
   calories: {
-    type: Number
+    type: String
   },
   carbs: {
     type: String

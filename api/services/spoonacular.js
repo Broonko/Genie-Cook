@@ -2,7 +2,7 @@ const axios = require('axios').default
 
 const API = axios.create({
   baseURL: 'https://api.spoonacular.com/recipes',
-  timeout: 2000,
+  timeout: 6000,
   params: {
     apiKey: process.env.API_KEY,
     number: 6
@@ -11,10 +11,12 @@ const API = axios.create({
 
 async function findRecipes (ingredients) {
   const recipes = await API.get('/findByIngredients', { params: { ingredients } })
+  console.log('findbyingredients')
   return Promise.all(recipes.data.map(async recipe => {
     const nutrition = await API.get(`/${recipe.id}/nutritionWidget.json`)
     const summary = await API.get(`/${recipe.id}/summary`)
     const steps = await API.get(`/${recipe.id}/analyzedInstructions`)
+    console.log('3api')
 
     // console.log(steps.data.map(e => e.steps.map(i => i.step))[0])
 

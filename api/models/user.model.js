@@ -22,7 +22,128 @@ const userSchema = new mongoose.Schema({
   favourites: [{
     type: mongoose.Schema.Types.ObjectId,
     ref: 'recipe'
-  }]
+  }],
+  mealPlanning: {
+    monday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    },
+    tuesday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    },
+    wednesday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    },
+    thursday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    },
+    friday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    },
+    saturday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    },
+    sunday: {
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe',
+        default: ''
+      }
+    }
+  }
 })
 
 const usermodel = mongoose.model('user', userSchema)

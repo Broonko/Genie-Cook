@@ -16,7 +16,19 @@ async function updateFavourites (req, res) {
   res.json(user.favourites)
 }
 
+async function addMeal (req, res) {
+  const user = await userModel
+    .findById(res.locals.user._id)
+
+  user.mealPlanning[req.params.day][req.params.time] = req.params.id
+
+  const updated = await userModel
+    .findByIdAndUpdate(res.locals.user._id, user, { new: true })
+  res.json(updated.mealPlanning)
+}
+
 module.exports = {
   getProfile,
-  updateFavourites
+  updateFavourites,
+  addMeal
 }

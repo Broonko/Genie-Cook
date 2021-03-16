@@ -1,8 +1,16 @@
 const mongoose = require('mongoose')
+const recipeModel = require('../models/recipe.model.js')
 const userModel = require('../models/user.model.js')
-
-function getProfile (req, res) {
-  res.json(res.locals.user)
+const populateFields = [
+  'favourites',
+  ...['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'].map(day => {
+    return ['breakfast', 'lunch', 'dinner'].map(time => { return `mealPlanning.${day}.${time}` })
+  }).flat()
+]
+async function getProfile(req, res) {
+  const userPopulated = await userModel.findById(res.locals.user._id)
+  const results = await userPopulated.deepPopulate(populateFields)
+  res.json(results)
 }
 
 async function updateFavourites (req, res) {
@@ -17,13 +25,13 @@ async function updateFavourites (req, res) {
 }
 
 async function addMeal (req, res) {
-  const user = await userModel
-    .findById(res.locals.user._id)
-
-  user.mealPlanning[req.params.day][req.params.time] = req.params.id
+  const user = await userModel.findById(res.locals.user._id)
+  const recipe = await recipeModel.findById(req.params.id)
+  user.mealPlanning[req.params.day][req.params.time] = recipe
 
   const updated = await userModel
     .findByIdAndUpdate(res.locals.user._id, user, { new: true })
+    .deepPopulate(populateFields)
   res.json(updated.mealPlanning)
 }
 

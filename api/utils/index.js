@@ -1,7 +1,8 @@
 const jwt = require('jsonwebtoken')
 const userModel = require('../models/user.model')
 
-async function authUser (req, res, next) {
+async function authUser(req, res, next) {
+  console.log('utils')
   if (!req.headers.token) {
     res.status(403).json({ error: 'No Token found' })
   } else {

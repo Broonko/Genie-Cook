@@ -11,6 +11,7 @@ function userSignup (req, res) {
       password: encryptedPasswd
     })
     .then(user => {
+      console.log('in auth')
       const data = { email: user.email, name: user.name }
       const token = jwt.sign(data, process.env.SECRET)
       res.status(200).json({ token: token, ...data })

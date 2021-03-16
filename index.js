@@ -24,7 +24,7 @@ mongoose.connect(
 
 // ADDING MIDDLEWARES & ROUTER
 const app = express()
-  .use(cors())
+  .use(cors({ origin: 'https://trusting-benz-417e33.netlify.app/' }))
   .use(morgan('combined'))
   .use(express.json())
   .use('/api', require('./api/router/index.js'))

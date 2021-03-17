@@ -29,7 +29,7 @@ const app = express()
   .use(express.json())
   .use('/api', require('./api/router/index.js'))
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.info('>'.repeat(40))
   console.info('💻  Rosana Server Live')
   console.info('📡  PORT: http://localhost:3000')

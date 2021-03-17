@@ -11,7 +11,7 @@
     "morgan": "^1.10.0"
   },
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "node index.js"
   },
   "devDependencies": {
     "eslint": "^7.21.0",

@@ -38,92 +38,92 @@ const userSchema = new mongoose.Schema({
       dinner: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'recipe'
-      },
+      }
     },
     tuesday: {
-        breakfast: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        lunch: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        dinner: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        }
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      }
     },
     wednesday: {
-        breakfast: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        lunch: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        dinner: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        }
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      }
     },
     thursday: {
-        breakfast: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        lunch: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        dinner: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        }
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      }
     },
     friday: {
-        breakfast: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        lunch: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        dinner: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        }
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      }
     },
     saturday: {
-        breakfast: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        lunch: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        dinner: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        }
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      }
     },
     sunday: {
-        breakfast: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        lunch: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        },
-        dinner: {
-          type: mongoose.Schema.Types.ObjectId,
-          ref: 'recipe'
-        }
+      breakfast: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      lunch: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
+      },
+      dinner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'recipe'
       }
+    }
   }
 })
 

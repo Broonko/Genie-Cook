@@ -16,14 +16,6 @@ async function findRecipes (ingredients) {
     const nutrition = await API.get(`/${recipe.id}/nutritionWidget.json`)
     const summary = await API.get(`/${recipe.id}/summary`)
     const steps = await API.get(`/${recipe.id}/analyzedInstructions`)
-    console.log('3api')
-
-    // console.log(steps.data.map(e => e.steps.map(i => i.step))[0])
-
-    // const initialSteps = steps.data.map(e => e.steps.map(i => i.step))
-    // let combSteps = []
-    // initialSteps.forEach(elem => { combSteps = [...combSteps, ...elem] })
-    // console.log(combSteps)
 
     return {
       ...recipe,
